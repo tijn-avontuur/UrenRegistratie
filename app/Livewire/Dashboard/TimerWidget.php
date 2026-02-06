@@ -75,7 +75,7 @@ class TimerWidget extends Component
 
         // Update elapsed time before pausing
         $this->elapsedTime = $durationSeconds;
-        
+
         // Pause the timer when modal opens
         $this->isRunning = false;
         $this->showStopModal = true;
@@ -110,7 +110,7 @@ class TimerWidget extends Component
         if ($this->currentEntry) {
             $this->elapsedTime = (int) abs($this->currentEntry->start_time->diffInSeconds(now(), false));
         }
-        
+
         // Resume the timer when canceling
         $this->isRunning = true;
         $this->showStopModal = false;
@@ -121,7 +121,7 @@ class TimerWidget extends Component
         $hours = floor($seconds / 3600);
         $minutes = floor(($seconds % 3600) / 60);
         $secs = $seconds % 60;
-        
+
         if ($hours > 0) {
             return sprintf('%d uur %d minuten', $hours, $minutes);
         } else {

@@ -6,18 +6,29 @@
 
     <div id="calendar"></div>
 
-    @scripts
+    @script
         <script>
-           document.addEventListener('DOMContentLoaded', function() {
+           function initCalendar() {
                var calendarEl = document.getElementById('calendar');
+               
+               if (calendarEl && !calendarEl.dataset.initialized) {
+                   var calendar = new FullCalendar.Calendar(calendarEl, {
+                       initialView: 'dayGridMonth',
+                   });
 
-               var calendar = new FullCalendar.Calendar(calendarEl, {
-                   initialView: 'dayGridMonth',
-               });
+                   calendar.render();
+                   calendarEl.dataset.initialized = 'true';
+               }
+           }
 
-               calendar.render();
+           // Initialize on first load
+           initCalendar();
+
+           // Reinitialize when navigating with Livewire
+           document.addEventListener('livewire:navigated', function() {
+               initCalendar();
            });
         </script>
-    @endscripts
+    @endscript
 
 </div>

@@ -14,7 +14,7 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('/calendar', Calendar::class)
-    ->middleware(['auth', 'verified']) 
-    ->name('calendar');
+Route::get('/kalender', Calendar::class)
+    ->middleware(['auth', 'verified'])
+    ->name('kalender');
 require __DIR__.'/settings.php';
