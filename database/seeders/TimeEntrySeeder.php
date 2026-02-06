@@ -36,7 +36,7 @@ class TimeEntrySeeder extends Seeder
             // Create time entries for past 30 days
             for ($i = 0; $i < 30; $i++) {
                 $date = now()->subDays($i);
-                
+
                 // Skip weekends
                 if ($date->isWeekend()) {
                     continue;
@@ -46,18 +46,18 @@ class TimeEntrySeeder extends Seeder
                 if (rand(1, 100) <= 80) {
                     // Create 1-3 time entries per day
                     $entriesCount = rand(1, 3);
-                    
+
                     for ($j = 0; $j < $entriesCount; $j++) {
                         $project = $userProjects->random();
-                        
+
                         // Generate realistic work hours (9:00 - 17:00)
                         $startHour = rand(9, 15);
                         $startMinute = [0, 15, 30, 45][rand(0, 3)];
                         $durationMinutes = [30, 60, 90, 120, 180, 240][rand(0, 5)];
-                        
+
                         $startTime = $date->copy()->setTime($startHour, $startMinute);
                         $endTime = $startTime->copy()->addMinutes($durationMinutes);
-                        
+
                         TimeEntry::factory()->create([
                             'user_id' => $user->id,
                             'project_id' => $project->id,
