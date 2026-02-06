@@ -144,7 +144,7 @@ return [
     */
 
     'features' => [
-        // Features::registration(), // Disabled - users cannot self-register
+        Features::registration(),
         Features::resetPasswords(),
         Features::emailVerification(),
         Features::twoFactorAuthentication([
