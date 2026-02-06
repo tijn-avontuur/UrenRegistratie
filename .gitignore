@@ -21,5 +21,6 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+package-lock.json
 /database/database.db
 documents/~$oject - ERD.docx
