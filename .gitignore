@@ -22,3 +22,5 @@ yarn-error.log
 /.vscode
 /.zed
 package-lock.json
+/database/database.db
+documents/~$oject - ERD.docx

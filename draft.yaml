@@ -1,5 +1,44 @@
 models:
-  # ...
+  User:
+    name: string
+    email: string unique
+    password: string
+    role: string
+    relationships:
+      hasMany: TimeEntry
+      belongsToMany: Project
+    timestamps: true
 
-controllers:
-  # ...
+  Project:
+    title: string
+    description: text nullable
+    color: string nullable
+    relationships:
+      hasMany: TimeEntry, ProjectAttachment
+      belongsToMany: User
+    timestamps: true
+
+  TimeEntry:
+    user_id: id foreign:users
+    project_id: id foreign:projects
+    date: date
+    start_time: datetime
+    end_time: datetime nullable
+    duration_minutes: integer nullable
+    source: string
+    relationships:
+      belongsTo: User, Project
+    timestamps: true
+
+  ProjectUser:
+    user_id: id foreign:users
+    project_id: id foreign:projects
+    timestamps: true
+
+  ProjectAttachment:
+    project_id: id foreign:projects
+    filename: string
+    filepath: string
+    uploaded_at: timestamp
+    relationships:
+      belongsTo: Project
