@@ -8,26 +8,26 @@
 
     @script
         <script>
-           function initCalendar() {
-               var calendarEl = document.getElementById('calendar');
-               
-               if (calendarEl && !calendarEl.dataset.initialized) {
-                   var calendar = new FullCalendar.Calendar(calendarEl, {
-                       initialView: 'dayGridMonth',
-                   });
+            function initCalendar() {
+                var calendarEl = document.getElementById('calendar');
 
-                   calendar.render();
-                   calendarEl.dataset.initialized = 'true';
-               }
-           }
+                if (calendarEl && !calendarEl.dataset.initialized) {
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                    });
 
-           // Initialize on first load
-           initCalendar();
+                    calendar.render();
+                    calendarEl.dataset.initialized = 'true';
+                }
+            }
 
-           // Reinitialize when navigating with Livewire
-           document.addEventListener('livewire:navigated', function() {
-               initCalendar();
-           });
+            // Initialize on first load
+            initCalendar();
+
+            // Reinitialize when navigating with Livewire
+            document.addEventListener('livewire:navigated', function() {
+                initCalendar();
+            });
         </script>
     @endscript
 
