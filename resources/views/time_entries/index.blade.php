@@ -9,6 +9,14 @@
                 <h1 class="text-2xl font-bold text-gray-900">{{ $title }}</h1>
                 <p class="text-gray-500 mt-1">Overzicht van je geregistreerde uren.</p>
             </div>
+            <div class="text-right">
+                @php
+                    $total = $totalMinutes ?? 0;
+                    $hours = intdiv($total, 60);
+                    $minutes = $total % 60;
+                @endphp
+                <div class="text-sm text-gray-500">Totaal gewerkt: <span class="font-medium text-gray-800">{{ $hours }}h {{ sprintf('%02d', $minutes) }}m</span></div>
+            </div>
         </div>
 
         <!-- Filters: date range + project -->

@@ -38,6 +38,9 @@ class TimeEntryController extends Controller
             ->paginate(15)
             ->appends($request->only(['start_date', 'end_date', 'project_id']));
 
-        return view('time_entries.index', compact('entries', 'projects'));
+    // total minutes across all time entries for this user (not limited by filters)
+    $totalMinutes = TimeEntry::where('user_id', $user->id)->sum('duration_minutes');
+
+    return view('time_entries.index', compact('entries', 'projects', 'totalMinutes'));
     }
 }
