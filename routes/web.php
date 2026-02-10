@@ -17,6 +17,7 @@ Route::view('dashboard', 'dashboard')
 Route::get('/kalender', Calendar::class)
     ->middleware(['auth', 'verified'])
     ->name('kalender');
+
 Route::get('/mijn-uren', [\App\Http\Controllers\TimeEntryController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('time-entries.index');

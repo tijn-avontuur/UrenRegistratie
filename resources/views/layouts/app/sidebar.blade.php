@@ -64,7 +64,7 @@
 
             <!-- User Profile Section -->
             <div class="p-4 border-t border-gray-200">
-                <div class="flex items-center gap-3 mb-3">
+                <a href="{{ route('profile.edit') }}" class="flex items-center gap-3 mb-3">
                     <div class="avatar placeholder">
                         <div class="bg-[#422AD5] text-white rounded-full w-10 h-10 flex items-center justify-center">
                             <span class="text-sm font-semibold">{{ auth()->user()->initials() }}</span>
@@ -74,7 +74,7 @@
                         <div class="font-semibold text-gray-800 text-sm">{{ auth()->user()->name }}</div>
                         <div class="text-xs text-gray-500">Employee</div>
                     </div>
-                </div>
+                </a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit"
