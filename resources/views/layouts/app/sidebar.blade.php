@@ -42,8 +42,9 @@
                     <span class="font-medium">Kalender</span>
                 </a>
 
-                <a href="#"
-                    class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                <a href="{{ route('time-entries.index') }}"
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg {{ request()->routeIs('time-entries.*') ? 'bg-[#422AD5] text-white' : 'text-gray-700 hover:bg-gray-100' }} transition-colors"
+                    wire:navigate>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -140,8 +141,9 @@
                         <span class="font-medium">Kalender</span>
                     </a>
 
-                    <a href="#"
-                        class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                    <a href="{{ route('time-entries.index') }}"
+                        class="flex items-center gap-3 px-4 py-3 rounded-lg {{ request()->routeIs('time-entries.*') ? 'bg-[#422AD5] text-white' : 'text-gray-700 hover:bg-gray-100' }} transition-colors"
+                        wire:navigate>
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
