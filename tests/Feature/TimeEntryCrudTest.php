@@ -12,6 +12,9 @@ beforeEach(function () {
     $this->user = User::factory()->create();
     $this->actingAs($this->user);
     $this->project = Project::factory()->create();
+
+    // Koppel de user aan het project zodat tijdsregistratie toegestaan is
+    $this->project->users()->attach($this->user->id);
 });
 
 it('kan een nieuwe tijdsregistratie aanmaken', function () {
