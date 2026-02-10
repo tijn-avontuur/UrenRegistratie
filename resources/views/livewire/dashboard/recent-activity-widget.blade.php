@@ -1,7 +1,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
     <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold text-gray-900">Recente Activiteit</h3>
-        <a href="#" class="text-sm text-[#422AD5] hover:text-[#3622a8] font-medium">Bekijk alles</a>
+        <a href="{{ route('projecten') }}" class="text-sm text-[#422AD5] hover:text-[#3622a8] font-medium" wire:navigate>Bekijk alles</a>
     </div>
 
     <div class="space-y-4">

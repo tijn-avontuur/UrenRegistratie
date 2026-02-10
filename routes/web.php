@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Calendar;
+use App\Livewire\Projects\ProjectDetail;
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -20,5 +21,13 @@ Route::get('/kalender', Calendar::class)
 Route::get('/mijn-uren', [\App\Http\Controllers\TimeEntryController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('time-entries.index');
+
+Route::view('projecten', 'pages.projects')
+    ->middleware(['auth', 'verified'])
+    ->name('projecten');
+
+Route::get('projecten/{project}', ProjectDetail::class)
+    ->middleware(['auth', 'verified'])
+    ->name('projecten.detail');
 
 require __DIR__.'/settings.php';

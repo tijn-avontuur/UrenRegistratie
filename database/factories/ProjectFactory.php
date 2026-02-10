@@ -11,10 +11,14 @@ class ProjectFactory extends Factory
      */
     public function definition(): array
     {
+        $startDate = fake()->dateTimeBetween('-3 months', '+1 month');
+
         return [
             'title' => fake()->sentence(4),
             'description' => fake()->text(),
-            'color' => fake()->word(),
+            'color' => fake()->hexColor(),
+            'start_date' => $startDate,
+            'end_date' => fake()->dateTimeBetween($startDate, '+6 months'),
         ];
     }
 }

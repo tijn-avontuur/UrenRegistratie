@@ -20,6 +20,8 @@ class Project extends Model
         'title',
         'description',
         'color',
+        'start_date',
+        'end_date',
     ];
 
     /**
@@ -31,6 +33,8 @@ class Project extends Model
     {
         return [
             'id' => 'integer',
+            'start_date' => 'date',
+            'end_date' => 'date',
         ];
     }
 

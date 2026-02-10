@@ -19,7 +19,7 @@ class MyProjectsWidget extends Component
     {
         $this->projects = Auth::user()
             ->projects()
-            ->withCount('timeEntries')
+            ->withCount(['timeEntries', 'projectAttachments'])
             ->latest('updated_at')
             ->take(3)
             ->get()
@@ -30,6 +30,8 @@ class MyProjectsWidget extends Component
                     'description' => $project->description,
                     'color' => $project->color,
                     'status_color' => $this->getStatusColor($project),
+                    'time_entries_count' => $project->time_entries_count,
+                    'attachments_count' => $project->project_attachments_count,
                 ];
             });
     }

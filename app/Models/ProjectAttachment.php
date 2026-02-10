@@ -32,7 +32,7 @@ class ProjectAttachment extends Model
         return [
             'id' => 'integer',
             'project_id' => 'integer',
-            'uploaded_at' => 'timestamp',
+            'uploaded_at' => 'datetime',
         ];
     }
 
