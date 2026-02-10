@@ -11,6 +11,35 @@
             </div>
         </div>
 
+        <!-- Filters: date range + project -->
+        <form method="GET" action="{{ route('time-entries.index') }}" class="mb-4 bg-white p-4 rounded-lg shadow-sm flex flex-col md:flex-row gap-3 items-end">
+            <div class="flex gap-4 items-end flex-wrap">
+                <div>
+                    <label class="block text-xs text-gray-500">Start datum</label>
+                    <input type="date" name="start_date" value="{{ request('start_date') }}" class="mt-1 block w-44 border-gray-200 rounded-md shadow-sm text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500">Eind datum</label>
+                    <input type="date" name="end_date" value="{{ request('end_date') }}" class="mt-1 block w-44 border-gray-200 rounded-md shadow-sm text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs text-gray-500">Project</label>
+                    <select name="project_id" class="mt-1 block w-56 border-gray-200 rounded-md shadow-sm text-sm">
+                        <option value="">{{ __('All projects') }}</option>
+                        @foreach($projects as $project)
+                            <option value="{{ $project->id }}" @if(request('project_id') == $project->id) selected @endif>{{ $project->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="ml-auto flex gap-2">
+                <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md text-sm">Filter</button>
+                <a href="{{ route('time-entries.index') }}" class="inline-flex items-center px-4 py-2 border rounded-md text-sm text-gray-600">Reset</a>
+            </div>
+        </form>
+
         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y">
