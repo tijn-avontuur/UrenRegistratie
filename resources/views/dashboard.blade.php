@@ -22,6 +22,13 @@ $title = __('Dashboard');
             <livewire:dashboard.recent-activity-widget />
         </div>
 
-        <livewire:dashboard.my-projects-widget />
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+                <livewire:dashboard.my-projects-widget />
+            </div>
+            <div class="lg:col-span-1">
+                @include('components.calendar-day-widget')
+            </div>
+        </div>
     </div>
 </x-layouts::app>
