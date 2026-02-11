@@ -42,25 +42,25 @@ new class extends Component {
 <section class="w-full">
     @include('partials.settings-heading')
 
-    <x-pages::settings.layout :heading="__('Update password')" :subheading="__('Ensure your account is using a long, random password to stay secure')">
+    <x-pages::settings.layout :heading="__('Wachtwoord wijzigen')" :subheading="__('Gebruik een lang en uniek wachtwoord om je account te beveiligen')">
         <form method="POST" wire:submit="updatePassword" class="space-y-5">
             <div>
                 <label for="current_password"
-                    class="block text-sm font-medium text-gray-700 mb-1">{{ __('Current password') }} <span
+                    class="block text-sm font-medium text-gray-700 mb-1">{{ __('Huidig wachtwoord') }} <span
                         class="text-red-500">*</span></label>
                 <input wire:model="current_password" id="current_password" type="password" required
                     autocomplete="current-password"
-                    class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
+                    class="block w-full h-11 rounded-md border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
                 @error('current_password')
                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
-                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">{{ __('New password') }}
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">{{ __('Nieuw wachtwoord') }}
                     <span class="text-red-500">*</span></label>
                 <input wire:model="password" id="password" type="password" required autocomplete="new-password"
-                    class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
+                    class="block w-full h-11 rounded-md border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
                 @error('password')
                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                 @enderror
@@ -68,11 +68,11 @@ new class extends Component {
 
             <div>
                 <label for="password_confirmation"
-                    class="block text-sm font-medium text-gray-700 mb-1">{{ __('Confirm password') }} <span
+                    class="block text-sm font-medium text-gray-700 mb-1">{{ __('Bevestig wachtwoord') }} <span
                         class="text-red-500">*</span></label>
                 <input wire:model="password_confirmation" id="password_confirmation" type="password" required
                     autocomplete="new-password"
-                    class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
+                    class="block w-full h-11 rounded-md border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
                 @error('password_confirmation')
                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                 @enderror
@@ -82,7 +82,7 @@ new class extends Component {
                 <button type="submit"
                     class="inline-flex items-center px-4 py-2 bg-[#422AD5] text-white text-sm font-medium rounded-md hover:bg-[#3622b0] transition-colors shadow-sm"
                     data-test="update-password-button">
-                    {{ __('Update password') }}
+                    {{ __('Wachtwoord bijwerken') }}
                 </button>
 
                 <x-action-message class="text-sm text-green-600 font-medium" on="password-updated">

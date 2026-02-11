@@ -27,8 +27,8 @@ new class extends Component {
 
 <section class="mt-8 pt-6 border-t border-gray-200">
     <div class="mb-4">
-        <h3 class="text-base font-semibold text-red-600">{{ __('Danger zone') }}</h3>
-        <p class="text-sm text-gray-500 mt-0.5">{{ __('Delete your account and all of its resources permanently.') }}</p>
+        <h3 class="text-base font-semibold text-red-600">{{ __('Gevarenzone') }}</h3>
+        <p class="text-sm text-gray-500 mt-0.5">{{ __('Verwijder je account en alle gegevens permanent.') }}</p>
     </div>
 
     <flux:modal.trigger name="confirm-user-deletion">
@@ -39,7 +39,7 @@ new class extends Component {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
-            {{ __('Delete account') }}
+            {{ __('Account verwijderen') }}
         </button>
     </flux:modal.trigger>
 
@@ -47,17 +47,17 @@ new class extends Component {
         <form method="POST" wire:submit="deleteUser" class="space-y-5">
             <div>
                 <h3 class="text-lg font-semibold text-gray-900">
-                    {{ __('Are you sure you want to delete your account?') }}</h3>
+                    {{ __('Weet je zeker dat je je account wilt verwijderen?') }}</h3>
                 <p class="text-sm text-gray-500 mt-2">
-                    {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                    {{ __('Als je account is verwijderd, worden alle gegevens permanent verwijderd. Vul je wachtwoord in om te bevestigen dat je je account definitief wilt verwijderen.') }}
                 </p>
             </div>
 
             <div>
                 <label for="delete-password"
-                    class="block text-sm font-medium text-gray-700 mb-1">{{ __('Password') }}</label>
+                    class="block text-sm font-medium text-gray-700 mb-1">{{ __('Wachtwoord') }}</label>
                 <input wire:model="password" id="delete-password" type="password"
-                    class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
+                    class="block w-full h-11 rounded-md border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5]" />
                 @error('password')
                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                 @enderror
@@ -67,14 +67,14 @@ new class extends Component {
                 <flux:modal.close>
                     <button type="button"
                         class="inline-flex items-center px-4 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
-                        {{ __('Cancel') }}
+                        {{ __('Annuleren') }}
                     </button>
                 </flux:modal.close>
 
                 <button type="submit"
                     class="inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors"
                     data-test="confirm-delete-user-button">
-                    {{ __('Delete account') }}
+                    {{ __('Account verwijderen') }}
                 </button>
             </div>
         </form>
