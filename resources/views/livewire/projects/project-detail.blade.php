@@ -34,6 +34,11 @@
                 Uren ({{ $project->timeEntries->count() }})
             </button>
             <button
+                wire:click="setActiveTab('team')"
+                class="@if($activeTab === 'team') border-[#422AD5] text-[#422AD5] @else border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 @endif whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                Team ({{ $project->users->count() }})
+            </button>
+            <button
                 wire:click="setActiveTab('attachments')"
                 class="@if($activeTab === 'attachments') border-[#422AD5] text-[#422AD5] @else border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 @endif whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors">
                 Bijlagen ({{ $project->projectAttachments->count() }})
@@ -95,6 +100,10 @@
 
         @if($activeTab === 'time-entries')
             <livewire:projects.time-entries-list :project="$project" :key="'time-entries-'.$project->id" />
+        @endif
+
+        @if($activeTab === 'team')
+            <livewire:projects.project-employees :project="$project" :key="'employees-'.$project->id" />
         @endif
 
         @if($activeTab === 'attachments')

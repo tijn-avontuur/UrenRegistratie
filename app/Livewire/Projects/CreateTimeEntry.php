@@ -21,13 +21,26 @@ class CreateTimeEntry extends Component
         $this->projectId = $projectId;
         $this->project_id = $projectId;
         $this->date = now()->format('Y-m-d');
-        $this->projects = Project::orderBy('title')->get();
+
+        // Only show projects where the user is assigned
+        $this->projects = Project::whereHas('users', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->orderBy('title')->get();
     }
 
     protected function rules()
     {
         return [
-            'project_id' => 'required|exists:projects,id',
+            'project_id' => [
+                'required',
+                'exists:projects,id',
+                function ($attribute, $value, $fail) {
+                    $project = Project::find($value);
+                    if ($project && !$project->users()->where('user_id', auth()->id())->exists()) {
+                        $fail('Je bent niet gekoppeld aan dit project en kunt er geen uren voor registreren.');
+                    }
+                },
+            ],
             'date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',

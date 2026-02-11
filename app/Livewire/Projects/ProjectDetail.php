@@ -27,6 +27,8 @@ class ProjectDetail extends Component
 
     #[On('attachment-uploaded')]
     #[On('attachment-deleted')]
+    #[On('employee-added')]
+    #[On('employee-removed')]
     public function refreshProject()
     {
         $this->project->refresh();

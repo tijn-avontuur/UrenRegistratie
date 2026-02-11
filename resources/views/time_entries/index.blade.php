@@ -89,9 +89,7 @@
                                 <td class="px-6 py-4 align-middle text-right text-sm">
                                     <details class="relative inline-block">
                                         <summary class="list-none p-2 rounded-full hover:bg-gray-100 cursor-pointer inline-flex items-center">
-                                            <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zm9-2a2 2 0 100 4 2 2 0 000-4zm3 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                            </svg>
+                                            <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="currentColor"> <circle cx="12" cy="5" r="1.8"/> <circle cx="12" cy="12" r="1.8"/> <circle cx="12" cy="19" r="1.8"/> </svg>
                                         </summary>
                                         <div class="absolute right-0 mt-2 w-40 bg-white border rounded shadow-sm z-10">
                                             <ul class="p-2">
