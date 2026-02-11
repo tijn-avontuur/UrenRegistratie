@@ -4,13 +4,16 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 
 class Calendar extends Component
 {
     public function render()
     {
-        // Get projects with start_date or end_date
-        $projects = Project::where(function ($query) {
+        $projects = Project::whereHas('users', function ($query) {
+                $query->where('users.id', Auth::id());
+            })
+            ->where(function ($query) {
                 $query->whereNotNull('start_date')
                     ->orWhereNotNull('end_date');
             })
@@ -35,7 +38,7 @@ class Calendar extends Component
             });
 
         return view('livewire.calendar', [
-            'projects' => $projects
+            'projects' => $projects,
         ]);
     }
 
