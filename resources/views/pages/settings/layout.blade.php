@@ -9,7 +9,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
-                {{ __('Profile') }}
+                {{ __('Profiel') }}
             </a>
             <a href="{{ route('user-password.edit') }}"
                 class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('user-password.*') ? 'bg-[#422AD5] text-white' : 'text-gray-700 hover:bg-gray-100' }}"
@@ -18,7 +18,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                {{ __('Password') }}
+                {{ __('Wachtwoord') }}
             </a>
 
         </nav>

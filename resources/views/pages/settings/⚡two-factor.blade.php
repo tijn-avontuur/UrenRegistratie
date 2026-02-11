@@ -149,24 +149,24 @@ new class extends Component {
     {
         if ($this->twoFactorEnabled) {
             return [
-                'title' => __('Two-Factor Authentication Enabled'),
-                'description' => __('Two-factor authentication is now enabled. Scan the QR code or enter the setup key in your authenticator app.'),
-                'buttonText' => __('Close'),
+                'title' => __('Twee-factor-authenticatie ingeschakeld'),
+                'description' => __('Twee-factor-authenticatie is nu ingeschakeld. Scan de QR-code of voer de setup-sleutel in in je authenticator-app.'),
+                'buttonText' => __('Sluiten'),
             ];
         }
 
         if ($this->showVerificationStep) {
             return [
-                'title' => __('Verify Authentication Code'),
-                'description' => __('Enter the 6-digit code from your authenticator app.'),
-                'buttonText' => __('Continue'),
+                'title' => __('Verifieer authenticatiecode'),
+                'description' => __('Vul de 6-cijferige code in uit je authenticator-app.'),
+                'buttonText' => __('Doorgaan'),
             ];
         }
 
         return [
-            'title' => __('Enable Two-Factor Authentication'),
-            'description' => __('To finish enabling two-factor authentication, scan the QR code or enter the setup key in your authenticator app.'),
-            'buttonText' => __('Continue'),
+            'title' => __('Twee-factor-authenticatie inschakelen'),
+            'description' => __('Om het inschakelen te voltooien, scan de QR-code of voer de setup-sleutel in in je authenticator-app.'),
+            'buttonText' => __('Doorgaan'),
         ];
     }
 }; ?>
@@ -174,7 +174,7 @@ new class extends Component {
 <section class="w-full">
     @include('partials.settings-heading')
 
-    <x-pages::settings.layout :heading="__('Two Factor Authentication')" :subheading="__('Manage your two-factor authentication settings')">
+    <x-pages::settings.layout :heading="__('Twee-factor-authenticatie')" :subheading="__('Beheer je 2FA-instellingen')">
         <div class="flex flex-col w-full mx-auto space-y-5 text-sm" wire:cloak>
             @if ($twoFactorEnabled)
                 <div class="space-y-4">
@@ -186,12 +186,12 @@ new class extends Component {
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                     clip-rule="evenodd" />
                             </svg>
-                            {{ __('Enabled') }}
+                            {{ __('Ingeschakeld') }}
                         </span>
                     </div>
 
                     <p class="text-gray-600">
-                        {{ __('With two-factor authentication enabled, you will be prompted for a secure, random pin during login, which you can retrieve from the TOTP-supported application on your phone.') }}
+                        {{ __('Met twee-factor-authenticatie ingeschakeld word je bij het inloggen gevraagd om een veilige code. Deze code haal je uit een TOTP-app op je telefoon.') }}
                     </p>
 
                     <livewire:pages::settings.two-factor.recovery-codes :$requiresConfirmation />
@@ -203,7 +203,7 @@ new class extends Component {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01" />
                             </svg>
-                            {{ __('Disable 2FA') }}
+                            {{ __('2FA uitschakelen') }}
                         </button>
                     </div>
                 </div>
@@ -217,12 +217,12 @@ new class extends Component {
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
                             </svg>
-                            {{ __('Disabled') }}
+                            {{ __('Uitgeschakeld') }}
                         </span>
                     </div>
 
                     <p class="text-gray-500">
-                        {{ __('When you enable two-factor authentication, you will be prompted for a secure pin during login. This pin can be retrieved from a TOTP-supported application on your phone.') }}
+                        {{ __('Als je twee-factor-authenticatie inschakelt, word je bij het inloggen gevraagd om een extra code. Deze code haal je uit een TOTP-app op je telefoon.') }}
                     </p>
 
                     <button type="button" wire:click="enable"
@@ -231,7 +231,7 @@ new class extends Component {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
-                        {{ __('Enable 2FA') }}
+                        {{ __('2FA inschakelen') }}
                     </button>
                 </div>
             @endif
@@ -264,12 +264,12 @@ new class extends Component {
                     <div class="flex items-center gap-3">
                         <button type="button" wire:click="resetVerification"
                             class="flex-1 px-4 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
-                            {{ __('Back') }}
+                            {{ __('Terug') }}
                         </button>
 
                         <button type="button" wire:click="confirmTwoFactor" x-bind:disabled="$wire.code.length < 6"
                             class="flex-1 px-4 py-2 bg-[#422AD5] text-white text-sm font-medium rounded-md hover:bg-[#3622b0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                            {{ __('Confirm') }}
+                            {{ __('Bevestigen') }}
                         </button>
                     </div>
                 </div>
@@ -311,7 +311,7 @@ new class extends Component {
                 <div class="relative flex items-center justify-center w-full">
                     <div class="absolute inset-0 w-full h-px top-1/2 bg-gray-200"></div>
                     <span class="relative px-2 text-sm bg-white text-gray-500">
-                        {{ __('or, enter the code manually') }}
+                        {{ __('of, voer de code handmatig in') }}
                     </span>
                 </div>
 
