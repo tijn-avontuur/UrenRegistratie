@@ -11,7 +11,8 @@ new class extends Component {
 
     <x-pages::settings.layout :heading="__('Weergave')" :subheading="__('Pas de weergave-instellingen van je account aan')">
         <div x-data="{ appearance: $flux.appearance }">
-            <p class="text-sm text-gray-500 mb-4">{{ __('Kies hoe UrenApp er voor jou uitziet. Selecteer hieronder een thema.') }}</p>
+            <p class="text-sm text-gray-500 mb-4">
+                {{ __('Kies hoe UrenApp er voor jou uitziet. Selecteer hieronder een thema.') }}</p>
 
             <div class="grid grid-cols-3 gap-3">
                 {{-- Light --}}
