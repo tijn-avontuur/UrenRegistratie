@@ -73,7 +73,8 @@ class EditTimeEntry extends Component
         $endDateTime = Carbon::parse($validated['date'] . ' ' . $validated['end_time']);
 
         // Calculate duration in minutes
-        $durationMinutes = $startDateTime->diffInMinutes($endDateTime);
+    // Use signed diff and round to avoid negative/fractional values.
+    $durationMinutes = (int) round(max(0, $endDateTime->diffInSeconds($startDateTime, false)) / 60);
 
         $this->timeEntry->update([
             'project_id' => $validated['project_id'],
