@@ -83,7 +83,7 @@
                     </div>
                     <div class="flex-1">
                         <div class="font-semibold text-gray-800 text-sm">{{ auth()->user()->name }}</div>
-                        <div class="text-xs text-gray-500">Medewerker</div>
+                        <div class="text-xs text-gray-500">{{ Str::ucfirst(auth()->user()->role) }}</div>
                     </div>
                 </a>
                 <form method="POST" action="{{ route('logout') }}">
