@@ -90,7 +90,7 @@
                                     <details class="relative inline-block">
                                         <summary class="list-none p-2 rounded-full hover:bg-gray-100 cursor-pointer inline-flex items-center">
                                             <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="currentColor"> <circle cx="12" cy="5" r="1.8"/> <circle cx="12" cy="12" r="1.8"/> <circle cx="12" cy="19" r="1.8"/> </svg>
-                                        </summary>
+0                                        </summary>
                                         <div class="absolute right-0 mt-2 w-40 bg-white border rounded shadow-sm z-10">
                                             <ul class="p-2">
                                                 <li class="text-sm text-gray-700 px-2 py-1">Actie 1 (later)</li>
