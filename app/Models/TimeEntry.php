@@ -10,6 +10,15 @@ class TimeEntry extends Model
 {
     use HasFactory;
 
+    protected static function booted(): void
+    {
+        static::saving(function (self $entry) {
+            if ($entry->duration_minutes !== null) {
+                $entry->duration_minutes = max(0, (int) round($entry->duration_minutes));
+            }
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *

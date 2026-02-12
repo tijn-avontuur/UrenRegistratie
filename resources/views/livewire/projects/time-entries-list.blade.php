@@ -20,7 +20,8 @@
                         <div class="mt-2 flex items-center gap-4 text-sm text-gray-700">
                             <span class="font-medium">{{ $entry->start_time->format('H:i') }} - {{ $entry->end_time?->format('H:i') ?? 'Lopend' }}</span>
                             @if($entry->duration_minutes)
-                                <span class="font-semibold text-blue-600">{{ floor($entry->duration_minutes / 60) }}u {{ $entry->duration_minutes % 60 }}m</span>
+                                @php($duration = max(0, (int) round($entry->duration_minutes)))
+                                <span class="font-semibold text-blue-600">{{ intdiv($duration, 60) }}u {{ $duration % 60 }}m</span>
                             @endif
                         </div>
                     </div>
