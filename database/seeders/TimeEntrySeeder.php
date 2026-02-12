@@ -17,7 +17,7 @@ class TimeEntrySeeder extends Seeder
         $users = User::all();
         $projects = Project::all();
 
-        // Create time entries for the past 30 days
+        // Create time entries for the past 90 days (3 months)
         foreach ($users as $user) {
             // Get projects this user is assigned to
             $userProjects = $projects->filter(function ($project) use ($user) {
@@ -33,8 +33,11 @@ class TimeEntrySeeder extends Seeder
                 $userProjects = $assignedProjects;
             }
 
-            // Create time entries for past 30 days
-            for ($i = 0; $i < 30; $i++) {
+            // Determine work intensity per user (some work more than others)
+            $workIntensity = rand(60, 95); // 60-95% chance to work on a given day
+
+            // Create time entries for past 90 days
+            for ($i = 0; $i < 90; $i++) {
                 $date = now()->subDays($i);
 
                 // Skip weekends
@@ -42,18 +45,19 @@ class TimeEntrySeeder extends Seeder
                     continue;
                 }
 
-                // 80% chance to have entries for a work day
-                if (rand(1, 100) <= 80) {
-                    // Create 1-3 time entries per day
-                    $entriesCount = rand(1, 3);
+                // Variable chance to have entries based on work intensity
+                if (rand(1, 100) <= $workIntensity) {
+                    // Create 2-4 time entries per day for more realistic workload
+                    $entriesCount = rand(2, 4);
 
                     for ($j = 0; $j < $entriesCount; $j++) {
                         $project = $userProjects->random();
 
-                        // Generate realistic work hours (9:00 - 17:00)
-                        $startHour = rand(9, 15);
+                        // Generate realistic work hours (8:00 - 18:00)
+                        $startHour = rand(8, 16);
                         $startMinute = [0, 15, 30, 45][rand(0, 3)];
-                        $durationMinutes = [30, 60, 90, 120, 180, 240][rand(0, 5)];
+                        // Varied durations: 30min to 4 hours
+                        $durationMinutes = [30, 45, 60, 90, 120, 150, 180, 240][rand(0, 7)];
 
                         $startTime = $date->copy()->setTime($startHour, $startMinute);
                         $endTime = $startTime->copy()->addMinutes($durationMinutes);

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Calendar;
 use App\Livewire\Projects\ProjectDetail;
+use App\Livewire\AdminUsers;
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -30,5 +31,9 @@ Route::view('projecten', 'pages.projects')
 Route::get('projecten/{project}', ProjectDetail::class)
     ->middleware(['auth', 'verified'])
     ->name('projecten.detail');
+
+Route::get('/admin/medewerkers', AdminUsers::class)
+    ->middleware(['auth', 'verified'])
+    ->name('admin.users');
 
 require __DIR__.'/settings.php';
