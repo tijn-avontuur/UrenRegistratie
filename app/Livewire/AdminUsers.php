@@ -21,6 +21,11 @@ class AdminUsers extends Component
 
     public function mount()
     {
+        // Controleer of de gebruiker een admin is
+        if (!auth()->user()->isAdmin()) {
+            abort(403, 'Toegang geweigerd. Alleen administrators hebben toegang tot deze pagina.');
+        }
+
         // Default: huidige maand
         $this->startDate = now()->startOfMonth()->format('Y-m-d');
         $this->endDate = now()->endOfMonth()->format('Y-m-d');

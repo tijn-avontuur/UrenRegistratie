@@ -33,7 +33,7 @@ Route::get('projecten/{project}', ProjectDetail::class)
     ->name('projecten.detail');
 
 Route::get('/admin/medewerkers', AdminUsers::class)
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth', 'verified', 'admin'])
     ->name('admin.users');
 
 require __DIR__.'/settings.php';

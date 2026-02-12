@@ -78,4 +78,12 @@ class User extends Authenticatable
 
         return strtoupper(substr($names[0], 0, 1) . substr(end($names), 0, 1));
     }
+
+    /**
+     * Check if the user is an admin.
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
 }
