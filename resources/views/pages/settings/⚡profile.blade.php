@@ -85,7 +85,7 @@ new class extends Component {
 <section class="w-full">
     @include('partials.settings-heading')
 
-    <x-pages::settings.layout :heading="__('Profile')" :subheading="__('Update your personal information and profile details')">
+    <x-pages::settings.layout :heading="__('Profiel')" :subheading="__('Werk je persoonlijke gegevens bij')">
         <form wire:submit="updateProfileInformation" class="space-y-6">
             {{-- Avatar & Name Header --}}
             <div class="flex items-center gap-4 pb-6 border-b border-gray-200">
@@ -100,15 +100,16 @@ new class extends Component {
 
             {{-- Personal Information --}}
             <div class="space-y-4">
-                <h4 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">{{ __('Personal Information') }}
+                <h4 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+                    {{ __('Persoonlijke gegevens') }}
                 </h4>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">{{ __('Name') }}
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">{{ __('Naam') }}
                             <span class="text-red-500">*</span></label>
                         <input wire:model="name" id="name" type="text" required autofocus autocomplete="name"
-                            class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('name') border-red-300 @enderror" />
+                            class="block w-full h-11 rounded-md border border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('name') border-red-300 @enderror" />
                         @error('name')
                             <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                         @enderror
@@ -116,9 +117,9 @@ new class extends Component {
 
                     <div>
                         <label for="phone"
-                            class="block text-sm font-medium text-gray-700 mb-1">{{ __('Phone') }}</label>
+                            class="block text-sm font-medium text-gray-700 mb-1">{{ __('Telefoon') }}</label>
                         <input wire:model="phone" id="phone" type="tel" autocomplete="tel"
-                            class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('phone') border-red-300 @enderror"
+                            class="block w-full h-11 rounded-md border border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('phone') border-red-300 @enderror"
                             placeholder="+31 6 12345678" />
                         @error('phone')
                             <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -127,10 +128,10 @@ new class extends Component {
                 </div>
 
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">{{ __('Email') }} <span
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">{{ __('E-mail') }} <span
                             class="text-red-500">*</span></label>
                     <input wire:model="email" id="email" type="email" required autocomplete="email"
-                        class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('email') border-red-300 @enderror" />
+                        class="block w-full h-11 rounded-md border border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('email') border-red-300 @enderror" />
                     @error('email')
                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
@@ -141,17 +142,17 @@ new class extends Component {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
                             </svg>
-                            <span>{{ __('Your email address is unverified.') }}
+                            <span>{{ __('Je e-mailadres is nog niet geverifieerd.') }}
                                 <button type="button" wire:click.prevent="resendVerificationNotification"
                                     class="underline hover:text-amber-700 font-medium">
-                                    {{ __('Resend verification email') }}
+                                    {{ __('Verificatie e-mail opnieuw versturen') }}
                                 </button>
                             </span>
                         </div>
 
                         @if (session('status') === 'verification-link-sent')
                             <p class="mt-2 text-sm font-medium text-green-600">
-                                {{ __('A new verification link has been sent to your email address.') }}
+                                {{ __('Er is een nieuwe verificatielink naar je e-mailadres gestuurd.') }}
                             </p>
                         @endif
                     @endif
@@ -159,10 +160,10 @@ new class extends Component {
 
                 <div>
                     <label for="position"
-                        class="block text-sm font-medium text-gray-700 mb-1">{{ __('Position') }}</label>
+                        class="block text-sm font-medium text-gray-700 mb-1">{{ __('Functie') }}</label>
                     <input wire:model="position" id="position" type="text"
-                        class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('position') border-red-300 @enderror"
-                        placeholder="{{ __('e.g. Software Developer') }}" />
+                        class="block w-full h-11 rounded-md border border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('position') border-red-300 @enderror"
+                        placeholder="{{ __('bijv. Software Developer') }}" />
                     @error('position')
                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
@@ -170,11 +171,11 @@ new class extends Component {
 
                 <div>
                     <label for="bio"
-                        class="block text-sm font-medium text-gray-700 mb-1">{{ __('Bio') }}</label>
+                        class="block text-sm font-medium text-gray-700 mb-1">{{ __('Over mij') }}</label>
                     <textarea wire:model="bio" id="bio" rows="3"
-                        class="block w-full rounded-md border-gray-200 shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('bio') border-red-300 @enderror"
-                        placeholder="{{ __('Tell us a little about yourself...') }}"></textarea>
-                    <p class="mt-1 text-xs text-gray-400">{{ __('Max 1000 characters') }}</p>
+                        class="block w-full rounded-md border border-gray-200 bg-white shadow-sm text-sm focus:border-[#422AD5] focus:ring-[#422AD5] @error('bio') border-red-300 @enderror"
+                        placeholder="{{ __('Vertel iets over jezelf...') }}"></textarea>
+                    <p class="mt-1 text-xs text-gray-400">{{ __('Max. 1000 tekens') }}</p>
                     @error('bio')
                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
@@ -186,7 +187,7 @@ new class extends Component {
                 <button type="submit"
                     class="inline-flex items-center px-4 py-2 bg-[#422AD5] text-white text-sm font-medium rounded-md hover:bg-[#3622b0] transition-colors shadow-sm"
                     data-test="update-profile-button">
-                    {{ __('Save changes') }}
+                    {{ __('Wijzigingen opslaan') }}
                 </button>
 
                 <x-action-message class="text-sm text-green-600 font-medium" on="profile-updated">
