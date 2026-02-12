@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Calendar;
 use App\Livewire\Projects\ProjectDetail;
 use App\Livewire\AdminUsers;
-
+use App\Http\Controllers\TimeEntryController;
 Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
@@ -20,7 +20,7 @@ Route::get('/kalender', Calendar::class)
     ->middleware(['auth', 'verified'])
     ->name('kalender');
 
-Route::get('/mijn-uren', [\App\Http\Controllers\TimeEntryController::class, 'index'])
+Route::get('/mijn-uren', [TimeEntryController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('time-entries.index');
 

@@ -37,10 +37,16 @@ class ProjectsList extends Component
     public function deleteProject($projectId)
     {
         $project = Project::findOrFail($projectId);
-        $project->delete();
 
-        $this->dispatch('project-deleted');
+        // Delete related records
+        $project->timeEntries()->delete();
+        $project->projectAttachments()->delete();
+        $project->users()->detach(); // For many-to-many relationships
+
+        // Now delete the project
+        $project->delete();
     }
+
 
     public function render()
     {
